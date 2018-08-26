@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>learning</groupId>
+    <artifactId>springcloud</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+
+    <modules>
+        <!--配置服务器，本例为person-server和some-server提供外部配置-->
+        <module>config</module>
+        <!--Eureka Server为微服务提供注册-->
+        <module>discovery</module>
+        <!--为UI模块提供保存person的REST的服务-->
+        <module>person</module>
+        <!--为UI模块返回一段字符串-->
+        <module>some</module>
+        <!--作为应用网关，提供外部访问的唯一入口，使用Feign消费person，Ribbon消费some服务，且都提供断路器功能-->
+        <module>UI</module>
+        <!--监控UI模块中的断路器-->
+        <module>monitor</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+        <version>Angel.SR3</version>
+    </parent>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+</project>
